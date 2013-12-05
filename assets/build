@@ -1,0 +1,46 @@
+#!/bin/bash
+# ubuntu server 12.04 x64
+
+apt-get update
+apt-get -y upgrade
+apt-get -y install python-software-properties wget libtool autoconf automake uuid-dev pkg-config
+add-apt-repository ppa:webupd8team/java -y
+apt-get -y update
+
+(echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections)
+apt-get install -y oracle-java7-installer
+
+cd /tmp
+
+# Install ZeroMQ
+
+tar -zxvf zeromq-2.1.7.tar.gz
+cd zeromq-2.1.7
+./configure
+make install
+ldconfig
+
+# Install JZMQ
+
+tar -zxvf jzmq.tar.gz
+cd jzmq
+./autogen.sh
+./configure
+touch src/classdist_noinst.stamp
+cd src
+javac -d . org/zeromq/*.java
+cd ../
+make
+make install
+ldconfig
+
+# Install Storm
+
+tar -zxvf storm-0.9.0.tar.gz
+mv storm-0.9.0 /usr/share/storm
+
+# Cleanup
+
+cd /
+rm -r /tmp/*
+apt-get -y purge libtool autoconf automake pkg-config
