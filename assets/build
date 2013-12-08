@@ -1,12 +1,10 @@
 #!/bin/bash
 # ubuntu server 12.04 x64
 
-apt-get update && apt-get -y upgrade && apt-get -y install wget libtool autoconf automake uuid-dev pkg-config
-
-cd /tmp
+apt-get update && apt-get -y upgrade && apt-get -y install wget build-essential libtool autoconf automake uuid-dev pkg-config
 
 # Install ZeroMQ
-
+cd /tmp
 tar -zxvf zeromq-2.1.7.tar.gz
 cd zeromq-2.1.7
 ./configure
@@ -14,7 +12,7 @@ make install
 ldconfig
 
 # Install JZMQ
-
+cd /tmp
 tar -zxvf jzmq.tar.gz
 cd jzmq
 ./autogen.sh
@@ -29,6 +27,7 @@ ldconfig
 
 # Install Storm
 
+cd /tmp
 tar -zxvf storm-0.9.0.tar.gz
 mv storm-0.9.0 /usr/share/storm
 
@@ -36,4 +35,5 @@ mv storm-0.9.0 /usr/share/storm
 
 cd /
 rm -r /tmp/*
-apt-get -y purge libtool autoconf automake pkg-config
+apt-get -y purge build-essential libtool autoconf automake pkg-config
+apt-get -y autoremove
