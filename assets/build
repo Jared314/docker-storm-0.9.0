@@ -35,5 +35,5 @@ mv storm-0.9.0 /usr/share/storm
 
 cd /
 rm -r /tmp/*
-apt-get -y purge build-essential libtool autoconf automake pkg-config
+apt-get -y purge build-essential libtool autoconf automake pkg-config uuid-dev
 apt-get -y autoremove
