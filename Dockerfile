@@ -11,4 +11,5 @@ ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
 ENV PATH $JAVA_HOME/bin:$PATH
 
 WORKDIR /usr/share/storm
-CMD ["run"]
+
+CMD ["/usr/bin/run"]

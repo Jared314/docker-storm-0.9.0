@@ -1,3 +1,11 @@
 #!/bin/bash
 
-bin/storm "$@"
+cd /usr/share/storm/daemon
+
+cat <<ENDFILE > run
+cd /usr/share/storm
+python bin/storm "$@"
+ENDFILE
+chmod +x run
+
+supervise .
