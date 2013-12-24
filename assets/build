@@ -3,6 +3,9 @@
 
 apt-get update && apt-get -y upgrade && apt-get -y install wget build-essential libtool autoconf automake uuid-dev pkg-config
 
+# Install Daemontools
+apt-get -y install daemontools
+
 # Install ZeroMQ
 cd /tmp
 tar -zxvf zeromq-2.1.7.tar.gz
@@ -30,6 +33,7 @@ ldconfig
 cd /tmp
 tar -zxvf storm-0.9.0.tar.gz
 mv storm-0.9.0 /usr/share/storm
+mkdir /mnt/storm
 
 # Cleanup
 
