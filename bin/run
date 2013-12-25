@@ -3,6 +3,7 @@
 cd /usr/share/storm/daemon
 
 cat <<ENDFILE > run
+#!/bin/bash
 cd /usr/share/storm
 python bin/storm "$@"
 ENDFILE
