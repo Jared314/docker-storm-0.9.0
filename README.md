@@ -16,7 +16,7 @@ https://github.com/nathanmarz/storm
 
 ## Usage
 
-Import the image:
+Create a Dockerfile and provide the desired Storm configuration file.
 
-    $ sudo docker pull jared314/docker-storm-0.9.0
-
+    FROM jared314/docker-storm-0.9.0
+    ADD storm.yaml /usr/share/storm/conf/storm.yaml
